@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CELESTÉ — Our Story</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .about-hero {
+      background: linear-gradient(135deg, var(--soft) 0%, var(--blush) 60%, #f0b8c0 100%);
+      padding: 80px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+    }
+    .about-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+    }
+    .about-hero .hero-label,
+    .about-hero .hero-title,
+    .about-hero .hero-sub { position: relative; z-index: 1; }
+
+    .about-manifesto {
+      padding: 72px 40px;
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .manifesto-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 16px;
+    }
+
+    .manifesto-text h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--deep);
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .manifesto-text p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--mauve);
+      line-height: 1.9;
+      margin-bottom: 16px;
+      letter-spacing: 0.3px;
+    }
+
+    .manifesto-img {
+      position: relative;
+    }
+
+    .manifesto-img img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 14px;
+    }
+
+    .manifesto-img-caption {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--blush);
+      border-radius: 12px;
+      padding: 18px 22px;
+      box-shadow: 0 8px 24px rgba(92,51,64,0.12);
+    }
+
+    .manifesto-img-caption p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px;
+      font-style: italic;
+      color: var(--deep);
+      margin: 0;
+    }
+
+    .manifesto-img-caption span {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rose);
+    }
+
+    .values-section {
+      padding: 72px 40px;
+      background: var(--blush);
+    }
+
+    .values-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .values-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--deep);
+      margin-bottom: 10px;
+    }
+
+    .values-header p {
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rose);
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .value-card {
+      background: var(--cream);
+      border-radius: 14px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+
+    .value-card:hover { transform: translateY(-4px); }
+
+    .value-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .value-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-style: italic;
+      color: var(--deep);
+      margin-bottom: 10px;
+    }
+
+    .value-card p {
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--mauve);
+      line-height: 1.7;
+      letter-spacing: 0.3px;
+    }
+
+    .story-section {
+      padding: 72px 40px;
+      background: var(--cream);
+    }
+
+    .story-timeline {
+      max-width: 680px;
+      margin: 0 auto;
+      padding-top: 48px;
+      position: relative;
+    }
+
+    .story-timeline::before {
+      content: '';
+      position: absolute;
+      top: 48px;
+      bottom: 0;
+      left: 20px;
+      width: 1px;
+      background: var(--soft);
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 32px;
+      margin-bottom: 48px;
+      position: relative;
+    }
+
+    .timeline-dot {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--blush);
+      border: 2px solid var(--rose);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .timeline-content {}
+
+    .timeline-year {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 6px;
+    }
+
+    .timeline-content h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--deep);
+      margin-bottom: 8px;
+    }
+
+    .timeline-content p {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--mauve);
+      line-height: 1.8;
+    }
+
+    .ingredients-section {
+      padding: 72px 40px;
+      background: var(--deep);
+      text-align: center;
+    }
+
+    .ingredients-section .section-label { color: var(--rose); }
+
+    .ingredients-section .section-title { color: var(--cream); }
+
+    .ingredients-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 800px;
+      margin: 40px auto 0;
+    }
+
+    .ingredient-card {
+      background: rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 28px 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: background 0.3s;
+    }
+
+    .ingredient-card:hover { background: rgba(255,255,255,0.1); }
+
+    .ingredient-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--blush);
+      margin-bottom: 8px;
+    }
+
+    .ingredient-card p {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(242,212,215,0.65);
+      line-height: 1.7;
+    }
+
+    .about-cta {
+      padding: 72px 40px;
+      background: var(--blush);
+      text-align: center;
+    }
+
+    .about-cta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--deep);
+      margin-bottom: 14px;
+    }
+
+    .about-cta p {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--mauve);
+      margin-bottom: 32px;
+      letter-spacing: 0.5px;
+    }
+
+    .about-cta a {
+      display: inline-block;
+      padding: 13px 40px;
+      background: var(--deep);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .about-cta a:hover { background: var(--mauve); transform: translateY(-1px); }
+
+    @media (max-width: 768px) {
+      .about-manifesto { grid-template-columns: 1fr; gap: 40px; padding: 48px 20px; }
+      .manifesto-img-caption { right: 0; bottom: -14px; }
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+      .ingredients-grid { grid-template-columns: 1fr 1fr; }
+      .values-section, .story-section, .ingredients-section, .about-cta { padding: 48px 20px; }
+    }
+
+    @media (max-width: 480px) {
+      .values-grid { grid-template-columns: 1fr; }
+      .ingredients-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="back-button">
+      <a href="index.html"><i class="fas fa-arrow-left"></i></a>
+    </div>
+    <div class="logo-container">
+      <h1 class="brand-name">CELESTÉ</h1>
+      <p class="brand-tagline">Unleash Your Inner Glow</p>
+    </div>
+  </header>
+
+  <nav style="background:var(--blush);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;gap:16px;">
+    <div style="display:flex;align-items:center;gap:4px;">
+      <a href="shop.html" style="font-family:'Jost',sans-serif;font-size:11px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--mauve);text-decoration:none;padding:7px 13px;border-radius:100px;">Shop</a>
+      <a href="about.html" style="font-family:'Jost',sans-serif;font-size:11px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--mauve);text-decoration:none;padding:7px 13px;border-radius:100px;">About</a>
+      <a href="faqs.html" style="font-family:'Jost',sans-serif;font-size:11px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--mauve);text-decoration:none;padding:7px 13px;border-radius:100px;">FAQs</a>
+      <a href="contact.html" style="font-family:'Jost',sans-serif;font-size:11px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--mauve);text-decoration:none;padding:7px 13px;border-radius:100px;">Contact</a>
+    </div>
+    <a href="cart.html" style="display:flex;align-items:center;gap:6px;padding:7px 14px;background:var(--deep);color:var(--cream);font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:100px;"><i class="fas fa-shopping-bag"></i> Cart</a>
+  </nav>
+
+  <section class="about-hero">
+    <p class="hero-label">Est. 2022 · Philippines</p>
+    <h2 class="hero-title">Beauty born from <em>intention</em></h2>
+    <p class="hero-sub">Clean ingredients. Conscious choices. Radiant results.</p>
+  </section>
+
+  <section class="about-manifesto">
+    <div class="manifesto-text">
+      <h3>Our Story</h3>
+      <h2>We believe beauty is a ritual, not a routine.</h2>
+      <p>CELESTÉ was born out of a simple frustration — finding cosmetics that felt luxurious, performed beautifully, and were made without compromise. No harsh chemicals. No animal testing. No half-measures.</p>
+      <p>We started small, blending formulas in a home studio in the Philippines, obsessing over texture and pigment and finish until every product felt like it belonged in a collection. It still does.</p>
+      <p>Today, CELESTÉ is worn by women who know what they want — and exactly what they won't settle for.</p>
+    </div>
+    <div class="manifesto-img">
+      <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=80" alt="CELESTÉ">
+      <div class="manifesto-img-caption">
+        <p>"Glow from within."</p>
+        <span>The CELESTÉ Philosophy</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="values-section">
+    <div class="values-header">
+      <p class="section-label">What we stand for</p>
+      <h2 class="section-title" style="font-family:'Cormorant Garamond',serif;font-size:34px;font-style:italic;font-weight:300;color:var(--deep);text-align:center;margin-bottom:10px;">Our Values</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card">
+        <span class="value-icon">🌿</span>
+        <h4>Cruelty-Free</h4>
+        <p>Never tested on animals. Every formula is certified cruelty-free, always.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">✨</span>
+        <h4>Clean Beauty</h4>
+        <p>No parabens, sulfates, or synthetic fragrances. Just what your skin actually needs.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">🌸</span>
+        <h4>Inclusive Shades</h4>
+        <p>Every product is formulated to complement all skin tones, not just some of them.</p>
+      </div>
+      <div class="value-card">
+        <span class="value-icon">♻️</span>
+        <h4>Sustainable Packaging</h4>
+        <p>We're actively transitioning to recyclable and minimal packaging across our full range.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="story-section">
+    <p class="section-label" style="text-align:center;">How we got here</p>
+    <h2 class="section-title">The CELESTÉ Timeline</h2>
+    <div class="story-timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot">🌱</div>
+        <div class="timeline-content">
+          <p class="timeline-year">2022</p>
+          <h4>The Beginning</h4>
+          <p>CELESTÉ launched with three products — a lippie, a gloss, and a blush — all hand-blended and sold through word of mouth in Luzon.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">💄</div>
+        <div class="timeline-content">
+          <p class="timeline-year">2023</p>
+          <h4>The First Collection</h4>
+          <p>Our first full collection — the Bloom Series — sold out within two weeks of launch. The waitlist proved there was real demand for what we were building.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">🌏</div>
+        <div class="timeline-content">
+          <p class="timeline-year">2024</p>
+          <h4>Going Online</h4>
+          <p>CELESTÉ launched its digital storefront, making the collection available nationwide with GCash and card payments supported.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">✨</div>
+        <div class="timeline-content">
+          <p class="timeline-year">2025</p>
+          <h4>Now</h4>
+          <p>A growing range, a loyal community, and a commitment to getting better with every formula — without ever compromising on what we believe in.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ingredients-section">
+    <p class="section-label">What goes in</p>
+    <h2 class="section-title">Key Ingredients</h2>
+    <div class="ingredients-grid">
+      <div class="ingredient-card">
+        <h4>Rose Hip Oil</h4>
+        <p>Rich in vitamins A and C. Nourishes and brightens while adding a silky base to every formula.</p>
+      </div>
+      <div class="ingredient-card">
+        <h4>Jojoba Wax</h4>
+        <p>A natural emollient that mimics skin's own oils. Keeps lips soft and products long-lasting.</p>
+      </div>
+      <div class="ingredient-card">
+        <h4>Shea Butter</h4>
+        <p>Deeply moisturizing and anti-inflammatory. The secret behind our buttery, comfortable wear.</p>
+      </div>
+      <div class="ingredient-card">
+        <h4>Mica Pigments</h4>
+        <p>Ethically sourced mineral pigments that deliver rich, true-to-pan color with buildable intensity.</p>
+      </div>
+      <div class="ingredient-card">
+        <h4>Vitamin E</h4>
+        <p>An antioxidant that protects and repairs. Every product is fortified with it.</p>
+      </div>
+      <div class="ingredient-card">
+        <h4>Camellia Extract</h4>
+        <p>A lightweight oil revered in Asian beauty traditions. Adds luminosity without grease.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-cta">
+    <h2>Ready to find your glow?</h2>
+    <p>Explore the full collection and discover what clean beauty can feel like.</p>
+    <a href="shop.html">Shop the Collection</a>
+  </section>
+
+  <footer>
+    <div class="support-links">
+      <span>Support: </span>
+      <a href="faqs.html">FAQs</a> |
+      <a href="shipping.html">Shipping & Returns</a> |
+      <a href="contact.html">Contact Us</a> |
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms</a>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CELESTÉ — FAQs</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .site-nav {
+      background: var(--blush);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+      gap: 16px;
+    }
+    .site-nav-links { display: flex; align-items: center; gap: 4px; }
+    .site-nav-links a {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--mauve);
+      text-decoration: none;
+      padding: 7px 13px;
+      border-radius: 100px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .site-nav-links a:hover { background: rgba(92,51,64,0.08); color: var(--deep); }
+    .site-nav-links a.active { color: var(--deep); font-weight: 500; }
+    .nav-cart-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background: var(--deep);
+      color: var(--cream) !important;
+      border-radius: 100px;
+      font-size: 11px !important;
+      letter-spacing: 2px !important;
+    }
+    .nav-cart-link:hover { background: var(--mauve) !important; }
+    @media (max-width: 768px) {
+      .site-nav { padding: 10px 20px; height: auto; flex-wrap: wrap; }
+      .site-nav-links a { font-size: 10px; padding: 5px 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="back-button">
+      <a href="index.html"><i class="fas fa-arrow-left"></i></a>
+    </div>
+    <div class="logo-container">
+      <h1 class="brand-name">CELESTÉ</h1>
+      <p class="brand-tagline">Unleash Your Inner Glow</p>
+    </div>
+  </header>
+
+  <nav class="site-nav">
+    <div class="site-nav-links">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="faqs.html" class="active">FAQs</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <a href="cart.html" class="site-nav-links nav-cart-link"><i class="fas fa-shopping-bag"></i> Cart</a>
+  </nav>
+
+  <nav class="page-nav">
+    <div class="page-title"><h2>Frequently Asked Questions</h2></div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search questions..." id="faq-search" oninput="searchFaqs()">
+      <button class="search-btn"><i class="fas fa-search"></i></button>
+    </div>
+  </nav>
+
+  <section class="content-section">
+    <div class="faq-list" id="faq-list">
+
+      <div class="faq-item" data-q="how long does shipping take">
+        <p class="faq-question">How long does shipping take?</p>
+        <p class="faq-answer">Standard shipping takes 3–7 business days. Express options are available at checkout for faster delivery.</p>
+      </div>
+
+      <div class="faq-item" data-q="how can i track my order">
+        <p class="faq-question">How can I track my order?</p>
+        <p class="faq-answer">Once your order is dispatched, you'll receive a tracking number via email or SMS to monitor your delivery.</p>
+      </div>
+
+      <div class="faq-item" data-q="what payment methods do you accept gcash maya card">
+        <p class="faq-question">What payment methods do you accept?</p>
+        <p class="faq-answer">We accept GCash, Maya, major credit/debit cards, and cash on delivery for select areas.</p>
+      </div>
+
+      <div class="faq-item" data-q="do you offer international shipping">
+        <p class="faq-question">Do you offer international shipping?</p>
+        <p class="faq-answer">At the moment, we ship within the Philippines only. International shipping is coming soon!</p>
+      </div>
+
+      <div class="faq-item" data-q="how do i return an item returns">
+        <p class="faq-question">How do I return an item?</p>
+        <p class="faq-answer">Items can be returned within 7 days of delivery if unused and in their original packaging. Contact us to initiate the process.</p>
+      </div>
+
+      <div class="faq-item" data-q="how long does it take to process a refund">
+        <p class="faq-question">How long does it take to process a refund?</p>
+        <p class="faq-answer">Refunds are processed within 5–10 business days after the returned item has been inspected and approved.</p>
+      </div>
+
+      <div class="faq-item" data-q="are your products cruelty free animals vegan">
+        <p class="faq-question">Are your products cruelty-free?</p>
+        <p class="faq-answer">Yes! All CELESTÉ products are cruelty-free and never tested on animals.</p>
+      </div>
+
+      <div class="faq-item" data-q="can i change or cancel my order">
+        <p class="faq-question">Can I change or cancel my order?</p>
+        <p class="faq-answer">Orders can be modified or cancelled within 24 hours of placement. After that, the order may already be in processing.</p>
+      </div>
+
+      <div class="faq-item" data-q="what ingredients do you use clean parabens sulfates">
+        <p class="faq-question">What ingredients do you use?</p>
+        <p class="faq-answer">CELESTÉ formulas are free from parabens, sulfates, and synthetic fragrances. We use clean ingredients like rose hip oil, jojoba wax, shea butter, and vitamin E. Full ingredient lists are listed on each product.</p>
+      </div>
+
+      <div class="faq-item" data-q="minimum order free shipping">
+        <p class="faq-question">Is there a minimum order for free shipping?</p>
+        <p class="faq-answer">Yes — orders over ₱1,500 qualify for free standard shipping anywhere in the Philippines.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="support-links">
+      <span>Support: </span>
+      <a href="faqs.html">FAQs</a> |
+      <a href="shipping.html">Shipping & Returns</a> |
+      <a href="contact.html">Contact Us</a> |
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms</a>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-question').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // Search
+    function searchFaqs() {
+      const q = document.getElementById('faq-search').value.toLowerCase().trim();
+      let found = 0;
+      document.querySelectorAll('.faq-item').forEach(item => {
+        const text = (item.dataset.q + ' ' + item.textContent).toLowerCase();
+        const show = !q || text.includes(q);
+        item.style.display = show ? 'block' : 'none';
+        if (show) found++;
+      });
+      const empty = document.getElementById('faq-empty');
+      if (!found && q) {
+        if (!empty) {
+          const el = document.createElement('p');
+          el.id = 'faq-empty';
+          el.style.cssText = 'text-align:center;color:var(--rose);font-size:13px;padding:32px 0;letter-spacing:1px;';
+          el.textContent = 'No results found. Try a different keyword.';
+          document.getElementById('faq-list').appendChild(el);
+        }
+      } else if (empty) {
+        empty.remove();
+      }
+    }
+  </script>
+
+  <style>
+    .faq-answer { display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-question::after { content: '−'; }
+  </style>
+
+</body>
+</html>

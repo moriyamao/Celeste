@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CELESTÉ — Your Cart</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .cart-section {
+      padding: 50px 40px 80px;
+      background: var(--cream);
+      min-height: 60vh;
+    }
+
+    .cart-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--deep);
+      margin-bottom: 6px;
+    }
+
+    .cart-subheading {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 40px;
+    }
+
+    .cart-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .cart-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 20px;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--soft);
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .cart-item-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      object-fit: cover;
+      background: var(--blush);
+    }
+
+    .cart-item-info {}
+
+    .cart-item-cat {
+      font-size: 9px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 4px;
+    }
+
+    .cart-item-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-style: italic;
+      color: var(--deep);
+      margin-bottom: 12px;
+    }
+
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .qty-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--soft);
+      background: transparent;
+      color: var(--deep);
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .qty-btn:hover { background: var(--deep); color: var(--cream); border-color: var(--deep); }
+
+    .qty-num {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--deep);
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .cart-item-right {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 12px;
+    }
+
+    .cart-item-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--deep);
+    }
+
+    .remove-btn {
+      background: none;
+      border: none;
+      color: var(--rose);
+      font-size: 13px;
+      cursor: pointer;
+      transition: color 0.2s;
+      padding: 0;
+    }
+
+    .remove-btn:hover { color: var(--deep); }
+
+    .cart-empty {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .cart-empty-icon {
+      font-size: 48px;
+      color: var(--soft);
+      margin-bottom: 20px;
+    }
+
+    .cart-empty h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-style: italic;
+      color: var(--mauve);
+      margin-bottom: 10px;
+    }
+
+    .cart-empty p {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 28px;
+    }
+
+    .cart-empty a {
+      display: inline-block;
+      padding: 12px 32px;
+      background: var(--deep);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: background 0.2s;
+    }
+
+    .cart-empty a:hover { background: var(--mauve); }
+
+    .order-summary {
+      background: var(--blush);
+      border-radius: 14px;
+      padding: 32px 28px;
+      position: sticky;
+      top: 20px;
+    }
+
+    .summary-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--deep);
+      margin-bottom: 24px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--mauve);
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .summary-row.total {
+      border-top: 1px solid var(--soft);
+      padding-top: 16px;
+      margin-top: 8px;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--deep);
+    }
+
+    .summary-row.total span:last-child {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-style: italic;
+    }
+
+    .promo-wrap {
+      display: flex;
+      gap: 8px;
+      margin: 20px 0;
+    }
+
+    .promo-input {
+      flex: 1;
+      padding: 10px 14px;
+      border: 1px solid var(--soft);
+      border-radius: 100px;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+      background: var(--white);
+      color: var(--deep);
+      outline: none;
+    }
+
+    .promo-input::placeholder { color: var(--rose); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; }
+    .promo-input:focus { border-color: var(--rose); }
+
+    .promo-btn {
+      padding: 10px 16px;
+      background: var(--deep);
+      color: var(--cream);
+      border: none;
+      border-radius: 100px;
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .promo-btn:hover { background: var(--mauve); }
+
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background: var(--deep);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .checkout-btn:hover { background: var(--mauve); transform: translateY(-1px); }
+
+    .continue-link {
+      display: block;
+      text-align: center;
+      margin-top: 14px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rose);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .continue-link:hover { color: var(--deep); }
+
+    .checkout-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(58,32,40,0.45);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .checkout-modal-overlay.open { display: flex; }
+
+    .checkout-modal {
+      background: var(--cream);
+      border-radius: 20px;
+      padding: 48px 40px;
+      max-width: 480px;
+      width: 90%;
+      text-align: center;
+      animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes modalIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .checkout-modal-icon { font-size: 48px; margin-bottom: 16px; }
+
+    .checkout-modal h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-style: italic;
+      color: var(--deep);
+      margin-bottom: 10px;
+    }
+
+    .checkout-modal p {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--mauve);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .checkout-modal button {
+      padding: 12px 32px;
+      background: var(--deep);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .checkout-modal button:hover { background: var(--mauve); }
+
+    @media (max-width: 768px) {
+      .cart-section { padding: 36px 20px 60px; }
+      .cart-layout { grid-template-columns: 1fr; }
+      .order-summary { position: static; }
+      .cart-item { grid-template-columns: 64px 1fr auto; gap: 14px; }
+      .cart-item-img { width: 64px; height: 64px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="back-button">
+      <a href="shop.html"><i class="fas fa-arrow-left"></i></a>
+    </div>
+    <div class="logo-container">
+      <h1 class="brand-name">CELESTÉ</h1>
+      <p class="brand-tagline">Unleash Your Inner Glow</p>
+    </div>
+  </header>
+
+  <nav style="background:var(--blush);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:52px;gap:16px;">
+    <div style="display:flex;align-items:center;gap:4px;">
+      <a href="shop.html" style="font-family:'Jost',sans-serif;font-size:11px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--mauve);text-decoration:none;padding:7px 13px;border-radius:100px;">Shop</a>
+      <a href="about.html" style="font-family:'Jost',sans-serif;font-size:11px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--mauve);text-decoration:none;padding:7px 13px;border-radius:100px;">About</a>
+      <a href="faqs.html" style="font-family:'Jost',sans-serif;font-size:11px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--mauve);text-decoration:none;padding:7px 13px;border-radius:100px;">FAQs</a>
+      <a href="contact.html" style="font-family:'Jost',sans-serif;font-size:11px;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:var(--mauve);text-decoration:none;padding:7px 13px;border-radius:100px;">Contact</a>
+    </div>
+    <a href="cart.html" style="display:flex;align-items:center;gap:6px;padding:7px 14px;background:var(--deep);color:var(--cream);font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:100px;"><i class="fas fa-shopping-bag"></i> Cart</a>
+  </nav>
+
+  <nav class="page-nav">
+    <div class="page-title"><h2>Your Cart</h2></div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search products...">
+      <button class="search-btn" onclick="window.location.href='shop.html'"><i class="fas fa-search"></i></button>
+    </div>
+  </nav>
+
+  <section class="cart-section">
+    <h2 class="cart-heading">Shopping Bag</h2>
+    <p class="cart-subheading" id="cart-count-label">0 items</p>
+
+    <div class="cart-layout" id="cart-layout">
+      <div id="cart-items-wrap"></div>
+      <div class="order-summary" id="order-summary">
+        <h3 class="summary-title">Order Summary</h3>
+        <div class="summary-row"><span>Subtotal</span><span id="subtotal">₱0</span></div>
+        <div class="summary-row"><span>Shipping</span><span>Calculated at checkout</span></div>
+        <div class="summary-row"><span>Discount</span><span id="discount-display">—</span></div>
+        <div class="summary-row total"><span>Total</span><span id="total-display">₱0</span></div>
+        <div class="promo-wrap">
+          <input type="text" class="promo-input" id="promo-input" placeholder="Promo code" maxlength="20">
+          <button class="promo-btn" onclick="applyPromo()">Apply</button>
+        </div>
+        <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+        <a href="shop.html" class="continue-link">← Continue Shopping</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="checkout-modal-overlay" id="checkout-modal">
+    <div class="checkout-modal">
+      <div class="checkout-modal-icon">🌸</div>
+      <h3>Thank you for your order!</h3>
+      <p>Your order has been placed. We'll send a confirmation to your email with tracking details within 24 hours.</p>
+      <button onclick="clearCart()">Continue Shopping</button>
+    </div>
+  </div>
+
+    <footer>
+    <div class="support-links">
+      <span>Support: </span>
+      <a href="faqs.html">FAQs</a> |
+      <a href="shipping.html">Shipping &amp; Returns</a> |
+      <a href="contact.html">Contact Us</a> |
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms</a>
+    </div>
+  </footer>
+
+
+
+  <script>
+    const PRODUCT_IMAGES = {
+      'Velvet Pout': 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=200&q=80',
+      'Rose Matte': 'https://images.unsplash.com/photo-1586495777744-4e6232bf2177?w=200&q=80',
+      'Dusk Palette': 'https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=200&q=80',
+      'Golden Hour': 'https://images.unsplash.com/photo-1631214524020-3c69b3d1a1d8?w=200&q=80',
+      'Crystal Gloss': 'https://images.unsplash.com/photo-1599305090598-fe179d501227?w=200&q=80',
+      'Petal Shine': 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=200&q=80',
+      'Blooming Blush': 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=200&q=80',
+      'Soft Flush': 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=200&q=80',
+    };
+
+    const PRODUCT_CATS = {
+      'Velvet Pout': 'Lippies', 'Rose Matte': 'Lippies',
+      'Dusk Palette': 'Palettes', 'Golden Hour': 'Palettes',
+      'Crystal Gloss': 'Glosses', 'Petal Shine': 'Glosses',
+      'Blooming Blush': 'Blushes', 'Soft Flush': 'Blushes',
+    };
+
+    const PROMOS = { 'CELESTE10': 0.10, 'GLOW20': 0.20 };
+    let appliedDiscount = 0;
+
+    function getCart() {
+      return JSON.parse(localStorage.getItem('celeste_cart') || '[]');
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem('celeste_cart', JSON.stringify(cart));
+    }
+
+    function renderCart() {
+      const cart = getCart();
+      const wrap = document.getElementById('cart-items-wrap');
+      const countLabel = document.getElementById('cart-count-label');
+      const totalItems = cart.reduce((s, i) => s + i.qty, 0);
+      countLabel.textContent = totalItems + (totalItems === 1 ? ' item' : ' items');
+
+      if (cart.length === 0) {
+        wrap.innerHTML = `
+          <div class="cart-empty">
+            <div class="cart-empty-icon"><i class="fas fa-shopping-bag"></i></div>
+            <h3>Your bag is empty</h3>
+            <p>Discover your next glow</p>
+            <a href="shop.html">Shop Now</a>
+          </div>`;
+        document.getElementById('order-summary').style.display = 'none';
+        return;
+      }
+
+      document.getElementById('order-summary').style.display = 'block';
+
+      wrap.innerHTML = cart.map((item, idx) => `
+        <div class="cart-item" id="item-${idx}">
+          <img class="cart-item-img" src="${PRODUCT_IMAGES[item.name] || ''}" alt="${item.name}" onerror="this.style.background='var(--blush)'">
+          <div class="cart-item-info">
+            <p class="cart-item-cat">${PRODUCT_CATS[item.name] || ''}</p>
+            <p class="cart-item-name">${item.name}</p>
+            <div class="qty-controls">
+              <button class="qty-btn" onclick="changeQty(${idx}, -1)"><i class="fas fa-minus"></i></button>
+              <span class="qty-num">${item.qty}</span>
+              <button class="qty-btn" onclick="changeQty(${idx}, 1)"><i class="fas fa-plus"></i></button>
+            </div>
+          </div>
+          <div class="cart-item-right">
+            <span class="cart-item-price">₱${(item.price * item.qty).toLocaleString()}</span>
+            <button class="remove-btn" onclick="removeItem(${idx})"><i class="fas fa-times"></i> Remove</button>
+          </div>
+        </div>
+      `).join('');
+
+      updateSummary();
+    }
+
+    function changeQty(idx, delta) {
+      const cart = getCart();
+      cart[idx].qty += delta;
+      if (cart[idx].qty <= 0) cart.splice(idx, 1);
+      saveCart(cart);
+      renderCart();
+    }
+
+    function removeItem(idx) {
+      const cart = getCart();
+      cart.splice(idx, 1);
+      saveCart(cart);
+      renderCart();
+    }
+
+    function updateSummary() {
+      const cart = getCart();
+      const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      const discount = Math.round(subtotal * appliedDiscount);
+      const total = subtotal - discount;
+      document.getElementById('subtotal').textContent = '₱' + subtotal.toLocaleString();
+      document.getElementById('discount-display').textContent = discount > 0 ? '−₱' + discount.toLocaleString() : '—';
+      document.getElementById('total-display').textContent = '₱' + total.toLocaleString();
+    }
+
+    function applyPromo() {
+      const code = document.getElementById('promo-input').value.trim().toUpperCase();
+      if (PROMOS[code]) {
+        appliedDiscount = PROMOS[code];
+        updateSummary();
+        document.getElementById('promo-input').style.borderColor = 'var(--rose)';
+      } else {
+        document.getElementById('promo-input').style.borderColor = '#e04040';
+      }
+    }
+
+    function checkout() {
+      const cart = getCart();
+      if (cart.length === 0) return;
+      document.getElementById('checkout-modal').classList.add('open');
+    }
+
+    function clearCart() {
+      localStorage.removeItem('celeste_cart');
+      document.getElementById('checkout-modal').classList.remove('open');
+      renderCart();
+    }
+
+    renderCart();
+  </script>
+
+</body>
+</html>

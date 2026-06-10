@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CELESTÉ — Contact Us</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .site-nav {
+      background: var(--blush);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+      gap: 16px;
+    }
+    .site-nav-links { display: flex; align-items: center; gap: 4px; }
+    .site-nav-links a {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--mauve);
+      text-decoration: none;
+      padding: 7px 13px;
+      border-radius: 100px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .site-nav-links a:hover { background: rgba(92,51,64,0.08); color: var(--deep); }
+    .site-nav-links a.active { color: var(--deep); font-weight: 500; }
+    .nav-cart-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      background: var(--deep);
+      color: var(--cream) !important;
+      border-radius: 100px;
+      font-size: 11px !important;
+      letter-spacing: 2px !important;
+    }
+    .nav-cart-link:hover { background: var(--mauve) !important; }
+    @media (max-width: 768px) {
+      .site-nav { padding: 10px 20px; height: auto; flex-wrap: wrap; }
+      .site-nav-links a { font-size: 10px; padding: 5px 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="back-button">
+      <a href="index.html"><i class="fas fa-arrow-left"></i></a>
+    </div>
+    <div class="logo-container">
+      <h1 class="brand-name">CELESTÉ</h1>
+      <p class="brand-tagline">Unleash Your Inner Glow</p>
+    </div>
+  </header>
+
+  <nav class="site-nav">
+    <div class="site-nav-links">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="contact.html" class="active">Contact</a>
+    </div>
+    <a href="cart.html" class="site-nav-links nav-cart-link"><i class="fas fa-shopping-bag"></i> Cart</a>
+  </nav>
+
+  <nav class="page-nav">
+    <div class="contact-title">
+      <h2>Contact Us</h2>
+      <span class="contact-icon"><i class="fas fa-phone"></i></span>
+    </div>
+  </nav>
+
+  <section class="content-section">
+    <div class="contact-wrapper">
+      <h3 class="contact-heading">We'd love to hear from you</h3>
+      <p class="contact-sub">Have questions or need assistance? We're here.</p>
+
+      <div class="contact-cards">
+
+        <div class="contact-card">
+          <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <p class="contact-card-label">Email</p>
+            <p class="contact-card-value">celesteph@gmail.com</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon"><i class="fas fa-phone-alt"></i></div>
+          <div>
+            <p class="contact-card-label">Phone</p>
+            <p class="contact-card-value">+63 966 084 4580</p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-card-icon"><i class="fas fa-hashtag"></i></div>
+          <div>
+            <p class="contact-card-label">Social Media</p>
+            <p class="contact-card-value">Celeste Ph</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="support-links">
+      <span>Support: </span>
+      <a href="faqs.html">FAQs</a> |
+      <a href="shipping.html">Shipping & Returns</a> |
+      <a href="contact.html">Contact Us</a> |
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms</a>
+    </div>
+  </footer>
+
+</body>
+</html>

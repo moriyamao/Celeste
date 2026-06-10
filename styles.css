@@ -1,0 +1,591 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap');
+
+:root {
+  --cream: #faf6f0;
+  --blush: #f2d4d7;
+  --rose: #c9848f;
+  --mauve: #9b5f6e;
+  --deep: #5c3340;
+  --text: #3a2028;
+  --soft: #e8c4c9;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  background-color: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 36px 40px 24px;
+  position: relative;
+  background: var(--cream);
+}
+
+.back-button {
+  position: absolute;
+  left: 40px;
+}
+
+.back-button a {
+  color: var(--rose);
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.back-button a:hover {
+  color: var(--deep);
+}
+
+.logo-container {
+  text-align: center;
+}
+
+.brand-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 300;
+  letter-spacing: 12px;
+  color: var(--deep);
+  line-height: 1;
+}
+
+.brand-tagline {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-top: 6px;
+}
+
+/* ── NAV STRIP ── */
+.main-nav, .page-nav {
+  background: var(--blush);
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.shop-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.shop-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-style: italic;
+  color: var(--deep);
+  font-weight: 400;
+}
+
+.shop-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rose);
+  font-size: 15px;
+  box-shadow: 0 2px 8px rgba(155,95,110,0.15);
+}
+
+.page-title h2,
+.contact-title h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--deep);
+  letter-spacing: 2px;
+}
+
+.contact-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rose);
+  font-size: 14px;
+}
+
+/* ── SEARCH ── */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  border-radius: 100px;
+  padding: 9px 18px;
+  width: 280px;
+  box-shadow: 0 2px 12px rgba(155,95,110,0.10);
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  font-family: 'Jost', sans-serif;
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--deep);
+  letter-spacing: 1px;
+}
+
+.search-bar input::placeholder {
+  color: var(--rose);
+  font-weight: 300;
+  letter-spacing: 2px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  color: var(--rose);
+  cursor: pointer;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.search-btn:hover {
+  color: var(--deep);
+}
+
+/* ── HERO BANNER ── */
+.hero-banner {
+  background: linear-gradient(135deg, var(--soft) 0%, var(--blush) 60%, #f0b8c0 100%);
+  padding: 60px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-banner::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+}
+
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: -40px;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+}
+
+.hero-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--mauve);
+  margin-bottom: 14px;
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--deep);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.hero-title em {
+  font-style: italic;
+  color: var(--mauve);
+}
+
+.hero-sub {
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: var(--mauve);
+  margin-bottom: 30px;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 13px 36px;
+  background: var(--deep);
+  color: var(--cream);
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 100px;
+  transition: background 0.25s, transform 0.2s;
+}
+
+.hero-btn:hover {
+  background: var(--mauve);
+  transform: translateY(-1px);
+}
+
+/* ── PRODUCT CATEGORIES ── */
+.categories-section {
+  padding: 50px 40px;
+  background: var(--cream);
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--rose);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 34px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--deep);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.product-categories {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.category-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+}
+
+.category-card:hover .category-overlay {
+  opacity: 1;
+}
+
+.category-card:hover .category-image img {
+  transform: scale(1.06);
+}
+
+.category-image {
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: var(--soft);
+}
+
+.category-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.category-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(92,51,64,0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.overlay-text {
+  color: white;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.category-name {
+  padding: 12px 0 6px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--deep);
+  text-align: center;
+  text-transform: lowercase;
+}
+
+/* ── CONTENT SECTION (FAQs, Shipping, Contact) ── */
+.content-section {
+  padding: 50px 40px;
+  background: var(--cream);
+  flex: 1;
+}
+
+/* FAQs */
+.faq-list {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--soft);
+  padding: 20px 0;
+  cursor: pointer;
+}
+
+.faq-question {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--deep);
+  letter-spacing: 0.5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question::after {
+  content: '+';
+  font-size: 22px;
+  color: var(--rose);
+  font-weight: 200;
+}
+
+.faq-answer {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--mauve);
+  margin-top: 10px;
+  line-height: 1.7;
+  letter-spacing: 0.3px;
+}
+
+/* Shipping */
+.shipping-grid {
+  max-width: 680px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.shipping-card {
+  background: var(--blush);
+  border-radius: 12px;
+  padding: 28px 24px;
+}
+
+.shipping-card-icon {
+  font-size: 24px;
+  color: var(--rose);
+  margin-bottom: 12px;
+}
+
+.info-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-style: italic;
+  color: var(--deep);
+  margin-bottom: 8px;
+  font-weight: 400;
+}
+
+.info-text {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--mauve);
+  line-height: 1.7;
+  letter-spacing: 0.3px;
+}
+
+/* Contact */
+.contact-wrapper {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--deep);
+  margin-bottom: 10px;
+}
+
+.contact-sub {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--rose);
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-card {
+  background: var(--blush);
+  border-radius: 12px;
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  text-align: left;
+}
+
+.contact-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rose);
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.contact-card-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--rose);
+  margin-bottom: 4px;
+}
+
+.contact-card-value {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--deep);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--deep);
+  padding: 24px 40px;
+  text-align: center;
+}
+
+.support-links {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--soft);
+  font-weight: 300;
+}
+
+.support-links a {
+  color: var(--blush);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.support-links a:hover {
+  color: var(--white);
+}
+
+.support-links span {
+  color: var(--rose);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .brand-name { font-size: 38px; letter-spacing: 8px; }
+  .product-categories { grid-template-columns: repeat(2, 1fr); }
+  .main-nav, .page-nav { flex-direction: column; align-items: flex-start; }
+  .search-bar { width: 100%; }
+  .shipping-grid { grid-template-columns: 1fr; }
+  header { padding: 28px 20px 18px; }
+  .back-button { left: 20px; }
+  .hero-title { font-size: 34px; }
+  .categories-section, .content-section { padding: 36px 20px; }
+}
+
+@media (max-width: 480px) {
+  .product-categories { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .brand-name { font-size: 30px; letter-spacing: 6px; }
+}
+/* ── TOAST (shop.html) ── */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--deep);
+  color: var(--cream);
+  font-family: 'Jost', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  border-radius: 100px;
+  opacity: 0;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  z-index: 999;
+  white-space: nowrap;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ── EMPTY STATE (shop grid) ── */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--rose);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}

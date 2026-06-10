@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CELESTÉ — Unleash Your Inner Glow</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      background: var(--blush);
+      height: 56px;
+      gap: 16px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-links a {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--mauve);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 100px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      background: rgba(92,51,64,0.08);
+      color: var(--deep);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-cart-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      background: var(--deep);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 100px;
+      transition: background 0.2s;
+      position: relative;
+    }
+
+    .nav-cart-btn:hover { background: var(--mauve); }
+
+    .cart-badge {
+      display: none;
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--rose);
+      color: white;
+      font-size: 9px;
+      font-weight: 500;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0;
+    }
+
+    .cart-badge.visible { display: flex; }
+
+    .nav-search {
+      display: flex;
+      align-items: center;
+      background: var(--white);
+      border-radius: 100px;
+      padding: 7px 16px;
+      width: 220px;
+      box-shadow: 0 2px 12px rgba(155,95,110,0.10);
+    }
+
+    .nav-search input {
+      border: none;
+      outline: none;
+      background: transparent;
+      flex: 1;
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--deep);
+      letter-spacing: 1px;
+    }
+
+    .nav-search input::placeholder {
+      color: var(--rose);
+      font-weight: 300;
+      letter-spacing: 2px;
+      font-size: 10px;
+      text-transform: uppercase;
+    }
+
+    .nav-search button {
+      background: none;
+      border: none;
+      color: var(--rose);
+      cursor: pointer;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+
+    .nav-search button:hover { color: var(--deep); }
+
+    /* ── MARQUEE ── */
+    .marquee-bar {
+      background: var(--deep);
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 9px 0;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 28s linear infinite;
+    }
+
+    .marquee-item {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--blush);
+      font-weight: 300;
+      padding: 0 36px;
+    }
+
+    .marquee-item span { color: var(--rose); margin-right: 12px; }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── HERO ── */
+    .hero-banner {
+      background: linear-gradient(135deg, var(--soft) 0%, var(--blush) 60%, #f0b8c0 100%);
+      padding: 80px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+    }
+
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; left: -40px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
+    }
+
+    .hero-label,
+    .hero-title,
+    .hero-sub,
+    .hero-actions { position: relative; z-index: 1; }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn-secondary {
+      display: inline-block;
+      padding: 13px 36px;
+      background: transparent;
+      color: var(--deep);
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 100px;
+      border: 1.5px solid var(--deep);
+      transition: background 0.25s, color 0.25s, transform 0.2s;
+    }
+
+    .hero-btn-secondary:hover {
+      background: var(--deep);
+      color: var(--cream);
+      transform: translateY(-1px);
+    }
+
+    /* ── FEATURE STRIP ── */
+    .feature-strip {
+      background: var(--cream);
+      padding: 28px 40px;
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      border-bottom: 1px solid var(--soft);
+      flex-wrap: wrap;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feature-item i {
+      color: var(--rose);
+      font-size: 16px;
+    }
+
+    .feature-item p {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--mauve);
+    }
+
+    /* ── CATEGORIES ── */
+    .categories-section {
+      padding: 60px 40px;
+      background: var(--cream);
+    }
+
+    /* ── FEATURED STRIP ── */
+    .featured-section {
+      padding: 60px 40px;
+      background: var(--blush);
+    }
+
+    .featured-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      max-width: 960px;
+      margin: 40px auto 0;
+    }
+
+    .featured-card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .featured-card:hover { transform: translateY(-4px); }
+
+    .featured-card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+
+    .featured-card:hover img { transform: scale(1.04); }
+
+    .featured-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(92,51,64,0.7) 0%, transparent 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+    }
+
+    .featured-card-label {
+      font-size: 9px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: rgba(242,212,215,0.8);
+      margin-bottom: 6px;
+    }
+
+    .featured-card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--cream);
+      margin-bottom: 14px;
+    }
+
+    .featured-card-link {
+      display: inline-block;
+      padding: 8px 20px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 100px;
+      backdrop-filter: blur(4px);
+      transition: background 0.2s;
+      width: fit-content;
+    }
+
+    .featured-card-link:hover { background: rgba(255,255,255,0.3); }
+
+    /* ── BRAND PROMISE ── */
+    .promise-section {
+      padding: 72px 40px;
+      background: var(--deep);
+      text-align: center;
+    }
+
+    .promise-label {
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 10px;
+    }
+
+    .promise-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 38px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--cream);
+      margin-bottom: 40px;
+      line-height: 1.2;
+    }
+
+    .promise-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .promise-card {
+      background: rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 32px 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: background 0.3s;
+    }
+
+    .promise-card:hover { background: rgba(255,255,255,0.1); }
+
+    .promise-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .promise-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-style: italic;
+      color: var(--blush);
+      margin-bottom: 8px;
+    }
+
+    .promise-card p {
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(242,212,215,0.6);
+      line-height: 1.7;
+    }
+
+    /* ── MOBILE NAV ── */
+    @media (max-width: 768px) {
+      .main-nav { padding: 0 20px; flex-wrap: wrap; height: auto; padding-top: 12px; padding-bottom: 12px; gap: 10px; }
+      .nav-links { gap: 0; flex-wrap: wrap; }
+      .nav-links a { font-size: 10px; padding: 6px 10px; letter-spacing: 1.5px; }
+      .nav-search { width: 100%; order: 3; }
+      .nav-right { margin-left: auto; }
+      .categories-section, .featured-section, .promise-section { padding: 40px 20px; }
+      .featured-row { grid-template-columns: 1fr; }
+      .promise-grid { grid-template-columns: 1fr; }
+      .feature-strip { gap: 24px; padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <h1 class="brand-name">CELESTÉ</h1>
+      <p class="brand-tagline">Unleash Your Inner Glow</p>
+    </div>
+  </header>
+
+  <nav class="main-nav">
+    <div class="nav-links">
+      <a href="shop.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="nav-right">
+      <div class="nav-search">
+        <input type="text" placeholder="Search..." id="search-input" onkeydown="handleSearch(event)">
+        <button onclick="goSearch()"><i class="fas fa-search"></i></button>
+      </div>
+      <a href="cart.html" class="nav-cart-btn">
+        <i class="fas fa-shopping-bag"></i> Cart
+        <span class="cart-badge" id="cart-badge"></span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="marquee-bar">
+    <div class="marquee-track" id="marquee-track">
+      <span class="marquee-item"><span>✦</span>Free shipping on orders over ₱1,500</span>
+      <span class="marquee-item"><span>✦</span>100% Cruelty-Free</span>
+      <span class="marquee-item"><span>✦</span>Clean Beauty — No parabens, no sulfates</span>
+      <span class="marquee-item"><span>✦</span>New Collection 2025</span>
+      <span class="marquee-item"><span>✦</span>Ships nationwide</span>
+      <span class="marquee-item"><span>✦</span>GCash & Maya accepted</span>
+      <span class="marquee-item"><span>✦</span>Free shipping on orders over ₱1,500</span>
+      <span class="marquee-item"><span>✦</span>100% Cruelty-Free</span>
+      <span class="marquee-item"><span>✦</span>Clean Beauty — No parabens, no sulfates</span>
+      <span class="marquee-item"><span>✦</span>New Collection 2025</span>
+      <span class="marquee-item"><span>✦</span>Ships nationwide</span>
+      <span class="marquee-item"><span>✦</span>GCash & Maya accepted</span>
+    </div>
+  </div>
+
+  <section class="hero-banner">
+    <p class="hero-label">New Collection 2025</p>
+    <h2 class="hero-title">Beauty that <em>blooms</em><br>from within</h2>
+    <p class="hero-sub">Curated cosmetics for every skin tone</p>
+    <div class="hero-actions">
+      <a href="shop.html" class="hero-btn">Shop the Collection</a>
+      <a href="about.html" class="hero-btn-secondary">Our Story</a>
+    </div>
+  </section>
+
+  <div class="feature-strip">
+    <div class="feature-item"><i class="fas fa-leaf"></i><p>Cruelty-Free</p></div>
+    <div class="feature-item"><i class="fas fa-flask"></i><p>Clean Ingredients</p></div>
+    <div class="feature-item"><i class="fas fa-truck"></i><p>Nationwide Shipping</p></div>
+    <div class="feature-item"><i class="fas fa-undo-alt"></i><p>7-Day Returns</p></div>
+    <div class="feature-item"><i class="fas fa-wallet"></i><p>GCash & Maya</p></div>
+  </div>
+
+  <section class="categories-section" id="categories">
+    <p class="section-label">Our Collection</p>
+    <h2 class="section-title">Shop by Category</h2>
+    <div class="product-categories">
+
+      <a href="shop.html?category=lippies" class="category-card" style="text-decoration:none;">
+        <div class="category-image">
+          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&q=80" alt="Lippies">
+        </div>
+        <div class="category-overlay"><span class="overlay-text">Shop Now</span></div>
+        <h3 class="category-name">lippies</h3>
+      </a>
+
+      <a href="shop.html?category=palettes" class="category-card" style="text-decoration:none;">
+        <div class="category-image">
+          <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=400&q=80" alt="Palettes">
+        </div>
+        <div class="category-overlay"><span class="overlay-text">Shop Now</span></div>
+        <h3 class="category-name">palettes</h3>
+      </a>
+
+      <a href="shop.html?category=glosses" class="category-card" style="text-decoration:none;">
+        <div class="category-image">
+          <img src="https://images.unsplash.com/photo-1599305090598-fe179d501227?w=400&q=80" alt="Glosses">
+        </div>
+        <div class="category-overlay"><span class="overlay-text">Shop Now</span></div>
+        <h3 class="category-name">glosses</h3>
+      </a>
+
+      <a href="shop.html?category=blushes" class="category-card" style="text-decoration:none;">
+        <div class="category-image">
+          <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&q=80" alt="Blushes">
+        </div>
+        <div class="category-overlay"><span class="overlay-text">Shop Now</span></div>
+        <h3 class="category-name">blushes</h3>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="featured-section">
+    <p class="section-label" style="text-align:center;">Handpicked for you</p>
+    <h2 class="section-title">Featured This Season</h2>
+    <div class="featured-row">
+      <div class="featured-card">
+        <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=700&q=80" alt="Dusk Palette">
+        <div class="featured-card-overlay">
+          <p class="featured-card-label">Palettes</p>
+          <h3 class="featured-card-title">The Dusk Palette</h3>
+          <a href="shop.html?category=palettes" class="featured-card-link">Shop Palettes</a>
+        </div>
+      </div>
+      <div class="featured-card">
+        <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=700&q=80" alt="Velvet Pout">
+        <div class="featured-card-overlay">
+          <p class="featured-card-label">Lippies</p>
+          <h3 class="featured-card-title">Velvet Pout</h3>
+          <a href="shop.html?category=lippies" class="featured-card-link">Shop Lippies</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="promise-section">
+    <p class="promise-label">Why CELESTÉ</p>
+    <h2 class="promise-title">Beauty with intention</h2>
+    <div class="promise-grid">
+      <div class="promise-card">
+        <span class="promise-icon">🌿</span>
+        <h4>Cruelty-Free Always</h4>
+        <p>Every formula is certified cruelty-free. No animal testing, ever — that's non-negotiable for us.</p>
+      </div>
+      <div class="promise-card">
+        <span class="promise-icon">✨</span>
+        <h4>Clean Formulas</h4>
+        <p>No parabens, no sulfates, no synthetic fragrance. Just ingredients your skin will thank you for.</p>
+      </div>
+      <div class="promise-card">
+        <span class="promise-icon">🌸</span>
+        <h4>Made for Everyone</h4>
+        <p>Shades and formulas built for all skin tones — because glowing skin has no exclusions.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="support-links">
+      <span>Support: </span>
+      <a href="faqs.html">FAQs</a> |
+      <a href="shipping.html">Shipping & Returns</a> |
+      <a href="contact.html">Contact Us</a> |
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms</a>
+    </div>
+  </footer>
+
+  <script>
+    // Cart badge
+    function updateCartBadge() {
+      const cart = JSON.parse(localStorage.getItem('celeste_cart') || '[]');
+      const total = cart.reduce((s, i) => s + i.qty, 0);
+      const badge = document.getElementById('cart-badge');
+      if (total > 0) {
+        badge.textContent = total;
+        badge.classList.add('visible');
+      } else {
+        badge.classList.remove('visible');
+      }
+    }
+    updateCartBadge();
+
+    // Search
+    function handleSearch(e) {
+      if (e.key === 'Enter') goSearch();
+    }
+
+    function goSearch() {
+      const q = document.getElementById('search-input').value.trim();
+      if (q) window.location.href = 'shop.html?search=' + encodeURIComponent(q);
+    }
+  </script>
+
+</body>
+</html>
